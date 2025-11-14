@@ -231,7 +231,7 @@ morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 
 password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 
-# Level 8
+# [Level 8](https://overthewire.org/wargames/bandit/bandit8.html)
 ```console
 bandit7@bandit:~$ cat data.txt | grep millionth
 millionth	dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
@@ -239,7 +239,7 @@ millionth	dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
 
 password: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
 
-# Level 9
+# [Level 9](https://overthewire.org/wargames/bandit/bandit9.html)
 ```console
 bandit8@bandit:~$ sort data.txt | uniq -u
 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
@@ -247,7 +247,13 @@ bandit8@bandit:~$ sort data.txt | uniq -u
 
 password: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
 
-# Level 10
+# [Level 10](https://overthewire.org/wargames/bandit/bandit10.html)
+## Task:
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+## Solution:
+`strings` displays printable strings:
+
 ```console
 bandit9@bandit:~$ strings data.txt | grep ==
 ========== the
@@ -255,3 +261,71 @@ bandit9@bandit:~$ strings data.txt | grep ==
 f\Z'========== is
 ========== FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
 ```
+
+# [Level 11](https://overthewire.org/wargames/bandit/bandit11.html)
+## Task:
+The password for the next level is stored in the file data.txt, which contains base64 encoded data.
+
+## Solution:
+`base64` allows to decode files
+
+```console
+bandit10@bandit:~$ cat data.txt | base64 --decode
+The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+```
+# [Level 12](https://overthewire.org/wargames/bandit/bandit12.html)
+## Task:
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions.
+
+## Solution:
+Using wikipedia I found description of ROT13 cipher:
+![alt text](bandit_images/level12-rot13-table.png)
+
+and using `tr` decoded `data.txt`
+```console
+bandit11@bandit:~$ cat data.txt | tr 'A-MN-Za-mn-z' 'N-ZA-Mn-za-m'
+The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+```
+
+# [Level 13](https://overthewire.org/wargames/bandit/bandit13.html)
+## Task:
+
+## Solution:
+
+# [Level 14](https://overthewire.org/wargames/bandit/bandit14.html)
+## Task:
+
+## Solution:
+
+# [Level 15](https://overthewire.org/wargames/bandit/bandit15.html)
+## Task:
+
+## Solution:
+
+# [Level 16](https://overthewire.org/wargames/bandit/bandit16.html)
+## Task:
+
+## Solution:
+
+# [Level 17](https://overthewire.org/wargames/bandit/bandit17.html)
+## Task:
+
+## Solution:
+
+# [Level 18](https://overthewire.org/wargames/bandit/bandit18.html)
+## Task:
+
+## Solution:
+
+# [Level 19](https://overthewire.org/wargames/bandit/bandit19.html)
+## Task:
+
+## Solution:
+
+# [Level 20](https://overthewire.org/wargames/bandit/bandit20.html)
+## Task:
+
+## Solution:
+
+
