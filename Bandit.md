@@ -278,14 +278,15 @@ The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
 The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions.
 
 ## Solution:
-Using wikipedia I found description of ROT13 cipher:
+Using `tr` for translation and wikipedia to find description of ROT13 cipher...
+
 ![alt text](bandit_images/level12-rot13-table.png)
 
-and using `tr` decoded `data.txt`
+... I decoded `data.txt`
+
 ```console
 bandit11@bandit:~$ cat data.txt | tr 'A-MN-Za-mn-z' 'N-ZA-Mn-za-m'
 The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
-
 ```
 
 # [Level 13](https://overthewire.org/wargames/bandit/bandit13.html)
