@@ -1,10 +1,24 @@
-# Level 0
-Entered:
+# [Level 0](https://overthewire.org/wargames/bandit/bandit0.html)
+## Task:
+Log into the level with SSH.
+
+Server: bandit.labs.overthewire.org
+
+Port: 2220
+
+Username: bandit0
+
+Password: bandit0
+## Solution:
 ```console
 ssh bandit.labs.overthewire.org "2220" -l bandit0
 ```
 
-# Level 1
+# [Level 1](https://overthewire.org/wargames/bandit/bandit1.html)
+## Task:
+The password for the next level is stored in a file called readme located in the home directory.
+
+## Solution:
 ```console
 bandit0@bandit:~$ cat readme | grep pass
 The password you are looking for is: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
@@ -13,7 +27,11 @@ bandit0@bandit:~$
 
 password: `ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If`
 
-# Level 2
+# [Level 2](https://overthewire.org/wargames/bandit/bandit2.html)
+## Task:
+Get the password from the file called ‘-’.
+
+## Solution:
 ```console
 bandit1@bandit:~$ cat "./-"
 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
@@ -21,7 +39,11 @@ bandit1@bandit:~$ cat "./-"
 
 password: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
 
-# Level 3
+# [Level 3](https://overthewire.org/wargames/bandit/bandit3.html)
+## Task:
+The password for the next level is stored in a file called spaces in this filename located in the home directory.
+
+## Solution:
 ```console
 bandit2@bandit:~$ cat "./--spaces in this filename--" 
 MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
@@ -29,7 +51,11 @@ MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
 
 password: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
 
-# Level 4
+# [Level 4](https://overthewire.org/wargames/bandit/bandit4.html)
+## Task:
+The password for the next level is stored in a hidden file in the inhere directory.
+
+## Solution:
 ```console
 bandit3@bandit:~$ cd inhere/
 bandit3@bandit:~/inhere$ ls --all
@@ -40,7 +66,11 @@ bandit3@bandit:~/inhere$ cat "./...Hiding-From-You"
 
 password: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
 
-# Level 5
+# [Level 5](https://overthewire.org/wargames/bandit/bandit5.html)
+## Task:
+The password for the next level is stored in the only human-readable file in the inhere directory.
+
+## Solution:
 ```console
 bandit4@bandit:~$ file inhere/*
 inhere/-file00: data
@@ -59,7 +89,14 @@ bandit4@bandit:~$ cat "inhere/-file07"
 
 password: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
 
-# Level 6
+# [Level 6](https://overthewire.org/wargames/bandit/bandit6.html)
+## Task:
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+- human-readable
+- 1033 bytes in size
+- not executable
+
+## Solution:
 All non-executable files:
 ```console
 bandit5@bandit:~$ find inhere/ -type f ! -executable | grep 07
@@ -90,7 +127,14 @@ maybehere18/-file2:       ASCII text
 
 password: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
 
-# Level 7
+# [Level 7](https://overthewire.org/wargames/bandit/bandit7.html)
+## Task:
+Find a file somewhere on the server. Properties:
+1. owned by user bandit7
+2. owned by group bandit6
+3. 33 bytes in size
+
+## Solution:
 We need:
 - file, so we use `-type f`,
 - owned by user `bandit7`, so we use `-user bandit7`,
@@ -232,6 +276,10 @@ morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 
 # [Level 8](https://overthewire.org/wargames/bandit/bandit8.html)
+## Task:
+Get the password from a file, next to the word millionth
+
+## Solution:
 ```console
 bandit7@bandit:~$ cat data.txt | grep millionth
 millionth	dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
@@ -240,6 +288,10 @@ millionth	dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
 password: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
 
 # [Level 9](https://overthewire.org/wargames/bandit/bandit9.html)
+## Task:
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once.
+
+## Solution:
 ```console
 bandit8@bandit:~$ sort data.txt | uniq -u
 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
@@ -291,6 +343,7 @@ The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
 
 # [Level 13](https://overthewire.org/wargames/bandit/bandit13.html)
 ## Task:
+
 
 ## Solution:
 
