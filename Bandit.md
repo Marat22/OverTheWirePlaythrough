@@ -343,9 +343,31 @@ The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
 
 # [Level 13](https://overthewire.org/wargames/bandit/bandit13.html)
 ## Task:
-
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level, it may be useful to create a directory under /tmp in which you can work using mkdir.
 
 ## Solution:
+Algorithm:
+- use `xxd` and `cat` to anylise file. It can be:
+  - if result of `xxd file` starts with `42 5A 68` -> add `.bz` file extention and use `bzip2 -d` to decode file
+  - if result of `xxd file` starts with `1f 8b` -> add `.gz` file extention and use `gzip -d` to decode file
+  - if result of `cat file` includes some human readable info -> add `.tar` file extention and use `tar -xf` to decode file
+
+```console
+bandit12@bandit:/tmp/tmp.GKXFU5WIyU$ xxd data8.bin 
+00000000: 1f8b 0808 2e17 ee68 0203 6461 7461 392e  .......h..data9.
+00000010: 6269 6e00 0bc9 4855 2848 2c2e 2ecf 2f4a  bin...HU(H,.../J
+00000020: 51c8 2c56 70f3 374d 2977 2b4e 3648 4e4a  Q.,Vp.7M)w+N6HNJ
+00000030: f4cc f430 c8b0 f032 4a0d cd2e 362a 4b09  ...0...2J...6*K.
+00000040: 7129 77cc e302 003e de32 4131 0000 00    q)w....>.2A1...
+bandit12@bandit:/tmp/tmp.GKXFU5WIyU$ mv data8.bin  data8.gz
+bandit12@bandit:/tmp/tmp.GKXFU5WIyU$ gzip -d data8.gz 
+bandit12@bandit:/tmp/tmp.GKXFU5WIyU$ ls
+compressed_data.tar  data5.bin  data6.bin.out  data8  hexdump_data
+bandit12@bandit:/tmp/tmp.GKXFU5WIyU$ cat data
+data5.bin      data6.bin.out  data8          
+bandit12@bandit:/tmp/tmp.GKXFU5WIyU$ cat data8
+The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+```
 
 # [Level 14](https://overthewire.org/wargames/bandit/bandit14.html)
 ## Task:
