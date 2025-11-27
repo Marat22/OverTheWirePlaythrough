@@ -469,8 +469,17 @@ bandit13@bandit.labs.overthewire.org's password:
 
 # [Level 15](https://overthewire.org/wargames/bandit/bandit15.html)
 ## Task:
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
 
 ## Solution:
+```console
+└─$ ssh bandit.labs.overthewire.org -p 2220 -l bandit14 -i sshkey.private
+
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14 | nc localhost 30000
+Correct!
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+```
 
 # [Level 16](https://overthewire.org/wargames/bandit/bandit16.html)
 ## Task:
