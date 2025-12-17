@@ -637,7 +637,7 @@ Password for next level: `kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx`
 The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL/TLS and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
 
 ## Solution:
-```terminal
+```console
 bandit16@bandit:~$ nmap -sV localhost -p 31000-32000
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-12-16 20:14 UTC
 Nmap scan report for localhost (127.0.0.1)
@@ -693,8 +693,18 @@ Notes:
 
 # [Level 18](https://overthewire.org/wargames/bandit/bandit18.html)
 ## Task:
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+**NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19**
 
 ## Solution:
+```console
+bandit17@bandit:~$ diff passwords.old passwords.new
+42c42
+< BMIOFKM7CRSLI97voLp3TD80NAq5exxk
+---
+> x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+```
 
 # [Level 19](https://overthewire.org/wargames/bandit/bandit19.html)
 ## Task:
