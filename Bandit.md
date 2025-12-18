@@ -708,12 +708,38 @@ bandit17@bandit:~$ diff passwords.old passwords.new
 
 # [Level 19](https://overthewire.org/wargames/bandit/bandit19.html)
 ## Task:
+The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
 
 ## Solution:
+- command `scp` allowes to receive or send file from/to remote desktop
+- by `-P 2220` I specify the port of remote server
+- with `bandit18@bandit.labs.overthewire.org:~/readme` I specify source file
+- with `./res19.txt` I specify destination
+
+```console
+┌──(marat㉿marat)-[~/Documents/OverTheWirePlaythrough]
+└─$ scp -P 2220 bandit18@bandit.labs.overthewire.org:~/readme ./res19.txt
+                         _                     _ _ _   
+                        | |__   __ _ _ __   __| (_) |_ 
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_ 
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+                                                       
+
+                      This is an OverTheWire game server. 
+            More information on http://www.overthewire.org/wargames
+
+backend: gibson-0
+bandit18@bandit.labs.overthewire.org's password: 
+readme                                                                                                                                                                                                   100%   33     0.2KB/s   00:00    
+                                                                                                                                                                                                                                           
+┌──(marat㉿marat)-[~/Documents/OverTheWirePlaythrough]
+└─$ cat res19.txt         
+cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+```
 
 # [Level 20](https://overthewire.org/wargames/bandit/bandit20.html)
 ## Task:
 
 ## Solution:
-
 
