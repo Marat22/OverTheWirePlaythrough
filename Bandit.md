@@ -749,3 +749,36 @@ To gain access to the next level, you should use the setuid binary in the homedi
 bandit19@bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20
 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
 ```
+
+# [Level 21](https://overthewire.org/wargames/bandit/bandit21.html)
+## Task:
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+
+**NOTE:** Try connecting to your own network daemon to see if it works as you think
+## Solution:
+```console
+bandit20@bandit:~$ tmux # start tmux
+bandit20@bandit:~$ unset TMUX # without this line tmux won't allow to create sessions
+bandit20@bandit:~$ tmux new -s sess # create new session
+bandit20@bandit:~$ echo 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO | netcat -l -p 3005  # send password on port 3005
+```
+
+Then create new tmux window using `ctrl+b, c` and run:
+```
+bandit20@bandit:~$ ./suconnect 3005
+Read: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+Password matches, sending next password
+```
+
+Then go to previous window using `ctrl+b, n` and password is already there:
+```
+bandit20@bandit:~$ echo 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO |  netcat -l -p 3005  
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+```
+
+
+```console
+andit20@bandit:~$ echo 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO |  netcat -l -p 3005    
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+
+```
